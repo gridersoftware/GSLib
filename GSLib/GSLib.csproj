@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72F906F5-D612-4760-944E-E0544977781E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GSLib</RootNamespace>
+    <AssemblyName>GSLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\GSLib.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\GSLib.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestSetup|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\TestSetup\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\GSLib.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\GSLib.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\Bitfield.cs" />
+    <Compile Include="Collections\InstallEventArgs.cs" />
+    <Compile Include="Collections\PriorityQueue.cs" />
+    <Compile Include="Collections\Range.cs" />
+    <Compile Include="Collections\BoundaryOutOfRangeException.cs" />
+    <Compile Include="Collections\RangeInfo.cs" />
+    <Compile Include="Collections\CompareException.cs" />
+    <Compile Include="Collections\SortableDictionary.cs" />
+    <Compile Include="Collections\Helpers.cs" />
+    <Compile Include="Collections\Sorter.cs" />
+    <Compile Include="Collections\Trees\BinarySearchTreeNode.cs" />
+    <Compile Include="Collections\Trees\BinaryTreeNode.cs" />
+    <Compile Include="Collections\Trees\DefaultNameGetter.cs" />
+    <Compile Include="Collections\Trees\INameGetter.cs" />
+    <Compile Include="Collections\Trees\ITreeNode.cs" />
+    <Compile Include="Collections\Trees\TreeNode.cs" />
+    <Compile Include="Controls\TreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cryptography\AES.cs" />
+    <Compile Include="Cryptography\EncryptedKeyIV.cs" />
+    <Compile Include="Cryptography\KeyIV.cs" />
+    <Compile Include="Cryptography\RSA.cs" />
+    <Compile Include="Database\GenericDbWrapper.cs" />
+    <Compile Include="Database\IDbWrapper.cs" />
+    <Compile Include="Database\MySQL\MySQLWrapper.cs" />
+    <Compile Include="Database\SQLServer\SQLWrapper.cs" />
+    <Compile Include="ErrorHandling\AutoErrorHandler.cs" />
+    <Compile Include="ErrorHandling\AutoErrorHandlerDbSchema.cs" />
+    <Compile Include="ErrorHandling\AutoErrorHandlerEventArgs.cs" />
+    <Compile Include="ErrorHandling\ErrorHandlerEventArgs.cs" />
+    <Compile Include="ErrorHandling\ErrorHandler.cs" />
+    <Compile Include="ErrorHandling\SqlAutoErrorHandler.cs" />
+    <Compile Include="Extensions\ArrayX.cs" />
+    <Compile Include="Extensions\ByteArray.cs" />
+    <Compile Include="Extensions\ConsoleX.cs" />
+    <Compile Include="Extensions\ObjectX.cs" />
+    <Compile Include="Forms\InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InputBox.Designer.cs">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IO\BatchControl.cs" />
+    <Compile Include="IO\Compression\Compression.cs" />
+    <Compile Include="IO\Compression\Deflate.cs" />
+    <Compile Include="IO\Compression\HuffmanCoding.cs" />
+    <Compile Include="IO\Compression\ICompress.cs" />
+    <Compile Include="IO\Compression\Zip.cs" />
+    <Compile Include="IO\FileData.cs" />
+    <Compile Include="IO\FileVerify.cs" />
+    <Compile Include="Language\DelimiterMismatchException.cs" />
+    <Compile Include="Language\DelimInfo.cs" />
+    <Compile Include="Language\DelimInfoCollection.cs" />
+    <Compile Include="Language\LangTokenizer.cs" />
+    <Compile Include="Language\DelimitedStringTokenizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Switch.cs" />
+    <Compile Include="XML\XmlDocument.cs" />
+    <Compile Include="XML\XmlException.cs" />
+    <Compile Include="XML\XmlNodeTypes.cs" />
+    <Compile Include="XML\XmlTreeNode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\InputBox.resx">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
