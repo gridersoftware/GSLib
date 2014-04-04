@@ -24,7 +24,7 @@ namespace GSLib.Database
     ///                            TConnectionBuilder As DbConnectionStringBuilder
     ///                            TDataReader As DbDataReader)
     ///             Inherits IDbWrapper
-    public class DbWrapper<TConnection, TCommand, TParameterCollection, TParameter, TConnectionBuilder, TDataReader> : IDbWrapper
+    public abstract class DbWrapper<TConnection, TCommand, TParameterCollection, TParameter, TConnectionBuilder, TDataReader> : IDbWrapper
         where TConnection : DbConnection 
         where TCommand : DbCommand
         where TParameterCollection : DbParameterCollection

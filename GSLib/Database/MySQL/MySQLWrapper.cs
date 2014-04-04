@@ -28,25 +28,13 @@ namespace GSLib.Database.MySQL
             connection = new OdbcConnection(str.ToString());
         }
 
-        public void NewCommand(string commandStr)
-        {
-            try
-            {
-                command = new OdbcCommand(commandStr, connection);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
         public OdbcDataReader ExecuteReaderCommand(string commandStr, OdbcParameter[] paramList)
         {
             OdbcDataReader result = null;
             try
             {
                 OpenConnection();
-                NewCommand(commandStr);
+                CreateCommand(commandStr);
                 result = ExecuteReader(paramList);
             }
             catch
@@ -60,6 +48,18 @@ namespace GSLib.Database.MySQL
         public void AddParameter(string name, object value)
         {
             parameters.Add(new OdbcParameter(name, value));
+        }
+
+        public override void CreateCommand(string commandStr)
+        {
+            try
+            {
+                command = new OdbcCommand(commandStr, connection);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }
