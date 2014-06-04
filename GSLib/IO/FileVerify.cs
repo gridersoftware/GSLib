@@ -57,11 +57,15 @@ namespace GSLib.IO
                 try
                 {
                     FileStream stream = new FileStream(path, FileMode.Open);
+                    byte[] data;
 
                     using (MD5 md5 = MD5.Create())
                     {
-                        return md5.ComputeHash(stream);
+                        data = md5.ComputeHash(stream);
                     }
+
+                    stream.Close();
+                    return data;
                 }
                 catch
                 {
