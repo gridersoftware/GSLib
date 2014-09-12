@@ -96,7 +96,6 @@
     <Compile Include="Collections\Trees\BinarySearchTreeNode.cs" />
     <Compile Include="Collections\Trees\BinaryTreeNode.cs" />
     <Compile Include="Collections\Trees\DefaultNameGetter.cs" />
-    <Compile Include="Collections\Trees\IGenericTreeNode.cs" />
     <Compile Include="Collections\Trees\INameGetter.cs" />
     <Compile Include="Collections\Trees\ITreeNode.cs" />
     <Compile Include="Collections\Trees\TreeNode.cs" />

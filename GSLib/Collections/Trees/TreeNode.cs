@@ -11,7 +11,7 @@ namespace GSLib.Collections.Trees
     /// <typeparam name="T">Type of value to contain.</typeparam>
     /// VB: Public Class TreeNode(Of T)
     ///          Inherits ITreeNode(Of T)
-    public class TreeNode<T> : ITreeNode<T>, IGenericTreeNode<TreeNode<T>, T>
+    public class TreeNode<T> : ITreeNode<T>
     {
         /***********************************************************************
          * Fields
@@ -137,23 +137,6 @@ namespace GSLib.Collections.Trees
         ITreeNode<T>[] ITreeNode<T>.Children
         {
             get 
-            {
-                return Children;
-            }
-        }
-
-
-        TreeNode<T>[] IGenericTreeNode<TreeNode<T>, T>.Siblings
-        {
-            get
-            {
-                return Siblings;
-            }
-        }
-
-        TreeNode<T>[] IGenericTreeNode<TreeNode<T>, T>.Children
-        {
-            get
             {
                 return Children;
             }
