@@ -6,7 +6,7 @@ using System.Text;
 namespace GSLib.Controls
 {
     /// <summary>
-    /// Represents a TreeView control. This control fixes the "Double-Click Bug" in the existing TreeView control."
+    /// Represents a TreeView control. This control fixes the "Double-Click Bug" in the existing TreeView control.
     /// </summary>
     public class TreeView : System.Windows.Forms.TreeView
     {

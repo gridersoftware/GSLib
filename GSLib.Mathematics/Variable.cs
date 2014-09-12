@@ -5,54 +5,57 @@ using System.Text;
 
 namespace GSLib.Mathematics
 {
-    public class Variable<T> : IVariable
+    public class Variable
     {
-        public string Name { get; private set; }
-        public T Value { get; set; }
+        RealNumber value;
 
+        public string Symbol { get; private set; }
+        public bool IsDefined { get; private set; }
         public bool IsConstant { get; private set; }
-        public bool IsBound { get; private set; }
+        public RealNumber Value
+        {
+            get
+            {
+                return IsDefined ? value : null;
+            }
+        } 
 
         /// <summary>
-        /// Creates a new Variable instance.
+        /// Initializes the variable as undefined
         /// </summary>
-        /// <param name="name">Name of the variable.</param>
-        /// <param name="value">Type of variable.</param>
-        public Variable(string name, T value)
+        /// <param name="symbol"></param>
+        public Variable(string symbol)
         {
-            if (name == null) throw new ArgumentNullException();
-            if (name == "") throw new ArgumentException();
+            if (Symbol == null)
+                throw new ArgumentNullException();
+            if (Symbol == "")
+                throw new ArgumentException();
 
-            Name = name;
-            Value = value;
-            IsConstant = false;
-        }
-    }
-
-    public static class VariableExtensions
-    {
-        public static Variable<T> GetByName<T>(this Sets.Set<Variable<T>> set, string name)
-        {
-            if (name == null) throw new ArgumentNullException();
-            if (name == "") throw new ArgumentException();
-
-            foreach (Variable<T> item in set)
-            {
-                if (item.Name == name) return item;
-            }
-            return null;
+            IsDefined = false;
+            value = 0;
+            Symbol = symbol;
         }
 
-        public static Variable<T> GetByName<T>(this Tuples.NTuple<Variable<T>> tuple, string name)
+        /// <summary>
+        /// Initializes the value with the number provided. If the number provided is null, the value is set as undefined and not constant.
+        /// </summary>
+        /// <param name="symbol"></param>
+        /// <param name="value"></param>
+        public Variable(string symbol, RealNumber value, bool isConstant = false)
+            : this(symbol)
         {
-            if (name == null) throw new ArgumentNullException();
-            if (name == "") throw new ArgumentException();
-
-            foreach (Variable<T> item in tuple)
+            if (value == null)
             {
-                if (item.Name == name) return item;
+                IsDefined = false;
+                this.value = 0;
+                IsConstant = false;
             }
-            return null;
+            else
+            {
+                IsDefined = true;
+                this.value = value;
+                IsConstant = isConstant;
+            }
         }
     }
 }

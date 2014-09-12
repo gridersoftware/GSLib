@@ -96,6 +96,7 @@
     <Compile Include="Collections\Trees\BinarySearchTreeNode.cs" />
     <Compile Include="Collections\Trees\BinaryTreeNode.cs" />
     <Compile Include="Collections\Trees\DefaultNameGetter.cs" />
+    <Compile Include="Collections\Trees\IGenericTreeNode.cs" />
     <Compile Include="Collections\Trees\INameGetter.cs" />
     <Compile Include="Collections\Trees\ITreeNode.cs" />
     <Compile Include="Collections\Trees\TreeNode.cs" />
@@ -174,6 +175,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_UseGlobalSettings="True" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

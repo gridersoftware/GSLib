@@ -11,7 +11,7 @@ namespace GSLib.Collections.Trees
     /// <typeparam name="T">Type of value to contain.</typeparam>
     /// VB: Public Class TreeNode(Of T)
     ///          Inherits ITreeNode(Of T)
-    public class TreeNode<T> : ITreeNode<T>
+    public class TreeNode<T> : ITreeNode<T>, IGenericTreeNode<TreeNode<T>, T>
     {
         /***********************************************************************
          * Fields
@@ -126,17 +126,54 @@ namespace GSLib.Collections.Trees
             }
         }
 
-        /// <summary>
-        /// Gets the siblings of the TreeNode.
-        /// </summary>
-        /// VB: Public ReadOnly Property Siblings As ITreeNode(Of T)()
-        public ITreeNode<T>[] Siblings
+        ITreeNode<T>[] ITreeNode<T>.Siblings
         {
             get
             {
-                List<TreeNode<T>> sibs = new List<TreeNode<T>>(parent.children);
-                sibs.Remove(this);
-                return sibs.ToArray();
+                return Siblings;
+            }
+        }
+
+        ITreeNode<T>[] ITreeNode<T>.Children
+        {
+            get 
+            {
+                return Children;
+            }
+        }
+
+
+        TreeNode<T>[] IGenericTreeNode<TreeNode<T>, T>.Siblings
+        {
+            get
+            {
+                return Siblings;
+            }
+        }
+
+        TreeNode<T>[] IGenericTreeNode<TreeNode<T>, T>.Children
+        {
+            get
+            {
+                return Children;
+            }
+        }
+
+        public TreeNode<T>[] Siblings
+        {
+            get
+            {
+                List<TreeNode<T>> sib = new List<TreeNode<T>>(Parent.children);
+                sib.Remove(this);
+                return sib.ToArray();
+            }
+        }
+
+        public TreeNode<T>[] Children
+        {
+            get
+            {
+                return children.ToArray();
             }
         }
 
@@ -171,17 +208,7 @@ namespace GSLib.Collections.Trees
             }
         }
 
-        /// <summary>
-        /// Gets the children of the TreeNode.
-        /// </summary>
-        /// VB: Public ReadOnly Property Children As ICollection(Of ITreeNode(Of T))
-        public ITreeNode<T>[] Children
-        {
-            get
-            {
-                return children.ToArray();
-            }
-        }
+        
 
         /// <summary>
         /// Gets or sets the setting determining if the TreeNode allows duplicate children to be added.
@@ -332,7 +359,6 @@ namespace GSLib.Collections.Trees
         /// </summary>
         /// <param name="value">Value to look for.</param>
         /// <returns>Returns the TreeNode containing the value. If the value is not found, returns null.</returns>
-        /// VB: Public Overridable Function FindChild(ByVal value As T) As TreeNode(Of T)
         public virtual TreeNode<T> FindChild(T value)
         {
             foreach (TreeNode<T> item in children)
@@ -340,6 +366,26 @@ namespace GSLib.Collections.Trees
                 if (item.Value.Equals(value)) return item;
             }
             return null;
+        }
+
+        /// <summary>
+        /// If a child with the given value exists, finds the first instance of that value and returns the containing TreeNode.
+        /// </summary>
+        /// <param name="value">Value to look for.</param>
+        /// <param name="comparer">Comparer to use.</param>
+        /// <returns>Returns the TreeNode containing the value. If the value is not found, returns null.</returns>
+        public TreeNode<T> FindChild(T value, IEqualityComparer<T> comparer)
+        {
+            foreach (TreeNode<T> item in children)
+            {
+                if (comparer.Equals(value, item.Value)) return item;
+            }
+            return null;
+        }
+
+        public TreeNode<T>[] GetChildren()
+        {
+            return children.ToArray();
         }
 
         /// <summary>
@@ -407,5 +453,13 @@ namespace GSLib.Collections.Trees
             return GetPath(seperator, (T obj) => { return nameGetter.GetName(obj); });
         }
         #endregion
+
+
+
+
+
+
+
+        
     }
 }
