@@ -139,6 +139,7 @@
     <Compile Include="Language\DelimInfoCollection.cs" />
     <Compile Include="Language\LangTokenizer.cs" />
     <Compile Include="Language\DelimitedStringTokenizer.cs" />
+    <Compile Include="Network\NetworkHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Switch.cs" />
     <Compile Include="XML\XmlDocument.cs" />

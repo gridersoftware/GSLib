@@ -7,6 +7,8 @@ namespace GSLib.Extensions
 {
     public static class ConsoleX
     {
+        public delegate bool TryValidate<T>(string input, out T result);
+
         /// <summary>
         /// Determines if the given key is associated with a printable character.
         /// </summary>
@@ -51,6 +53,23 @@ namespace GSLib.Extensions
                 if (!valid) Console.Write(invalidMessage);
             } while (!valid);
             return input;
+        }
+
+        public static T PromptUser<T>(string prompt, string invalidMessage, TryValidate<T> validityCheck)
+        {
+            string input;
+            bool valid;
+            T result;
+
+            do
+            {
+                Console.Write(prompt);
+                input = Console.ReadLine();
+                valid = validityCheck(input, out result);
+            }
+            while (!valid);
+
+            return result;
         }
 
         /// <summary>
